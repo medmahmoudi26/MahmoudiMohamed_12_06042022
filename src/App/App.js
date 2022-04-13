@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Navigate, Routes, Route, useParams } from 'react-router-dom';
+import Dashboard from '../containers/Dashboard/Dashboard';
+import {Component, lazy} from 'react';
+import {routes} from '../routes/routes';
+import { render } from '@testing-library/react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const component = (component) => {
+      return lazy(() => import(`../components/${component}/${component}`))
+    }
+
+    return (
+      <Router>
+          <Routes>
+      <Route path="/" element={<Navigate to="/dashboard/12" />} />
+      <Route path="/dashboard/:id" element={<Child/>} />
+      <Route
+        path="*"
+        element={<Navigate to="/" replace />}
+      />
+          
+          </Routes>
+        </Router>
+    );
+  } 
+}
+
+const Child = (props) => {
+  let { id } = useParams();
+  <Dashboard id={id}/>
 }
 
 export default App;

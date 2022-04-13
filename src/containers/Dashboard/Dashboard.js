@@ -5,7 +5,6 @@ class Dashboard extends Component {
     state = {
         id: this.props.id,
     }
-
     render() {
         return (
             <Fragment>

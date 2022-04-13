@@ -1,12 +1,12 @@
 export const routes = [{
-    path: ',',
+    path: '/',
     },
     {
-        path: "/dashboard/:id"
+    path: "/dashboard/:id",
     },
     {
         path: "*", // default page is 404
-        component: 'Error 404',
-        noExact: true
+        component: 'Error404',
+        noExact: true,
     }
 ]
