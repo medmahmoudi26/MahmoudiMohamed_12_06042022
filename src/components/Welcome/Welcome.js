@@ -13,8 +13,5 @@ class Welcome extends Component {
     }
 }
 
-Welcome.propTypes = {
-    welcomeData : PropTypes.string,
-}
 
 export default Welcome;

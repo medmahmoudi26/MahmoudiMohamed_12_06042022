@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ApiFormatter from './ApiFormatter';
 
 class ApiProvider {
     constructor() {
@@ -12,7 +13,7 @@ class ApiProvider {
 
         await axios.get(url)
         .then((response) => {
-            data = response; // maybe format this
+            data = ApiFormatter.getMainDataFormat(response);
         })
 
         return data;
@@ -25,7 +26,7 @@ class ApiProvider {
 
         await axios.get(url)
         .then((response) => {
-            data = response; // maybe format this
+            data = ApiFormatter.getDailyActivityDataFormat(response);
         })
 
         return data;
@@ -38,7 +39,7 @@ class ApiProvider {
 
         await axios.get(url)
         .then((response) => {
-            data = response; // maybe format this
+            data = ApiFormatter.getUserAverageDataFormat(response);
         })
 
         return data;

@@ -7,7 +7,7 @@ import protein from '../../assets/macroTracker/protein.png';
 import carbohydrates from '../../assets/macroTracker/carbohydrates.png';
 import lipids from '../../assets/macroTracker/lipids.png';
 
-class Charts extends Component {
+class Chart extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,3 +20,5 @@ class Charts extends Component {
         this.apiProvider = new ApiProvider();
     }
 }
+
+export default Chart;

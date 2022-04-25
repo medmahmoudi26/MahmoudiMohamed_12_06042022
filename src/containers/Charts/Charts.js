@@ -3,8 +3,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
-import Chart from '../../components/Chart/Chart'
-import DailyActivity from '../../components/DailyActivity/DailyActivity'
+import Chart from '../../components/Chart/Chart';
+import DailyActivity from '../../containers/DailyActivity/DailyActivity';
+import Welcome from '../../components/Welcome/Welcome';
 
 // Put assets here
 
@@ -54,12 +55,10 @@ class Charts extends Component {
         : (
             <section className="charts">
                 <Welcome welcomeData={this.state.welcomeData} />
-                <DailyActivity id={this.state.id} />
-                {this.getHorizontalSectionCharts()}
-                {this.getMacroTrackerSideSection()}
+                <DailyActivity id={this.state.id}/>
             </section>
         )
     }
 }
 
-export default Chart;
+export default Charts;

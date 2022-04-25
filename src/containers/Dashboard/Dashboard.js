@@ -15,7 +15,7 @@ function Dashboard() {
             <Header />
             <main>
                 <SideBar />
-
+                <Charts id={id} />
             </main>
         </Fragment>
         );
