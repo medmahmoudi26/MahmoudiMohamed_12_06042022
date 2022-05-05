@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter as Router, Navigate, Routes, Route, useParams } from 'react-router-dom';
 import Dashboard from '../containers/Dashboard/Dashboard';
 import {Component, lazy} from 'react';
-import {routes} from '../routes/routes';
 //import { render } from '@testing-library/react';
 
 class App extends Component {

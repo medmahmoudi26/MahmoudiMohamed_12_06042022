@@ -1,14 +1,20 @@
 import ApiProvider from '../../Api/ApiProvider';
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-
 import ErrorModal from '../../components/ErrorModal/ErrorModal';
-import Chart from '../../components/Chart/Chart';
 import DailyActivity from '../../containers/DailyActivity/DailyActivity';
 import Welcome from '../../components/Welcome/Welcome';
 
-// Put assets here
+// Icons
+import calories from '../../assets/macroTracker/calories.png';
+import protein from '../../assets/macroTracker/protein.png';
+import carbohydrates from '../../assets/macroTracker/carbohydrates.png';
+import lipids from '../../assets/macroTracker/lipids.png';
 
+// Charts
+import Tracker from '../../components/Tracker/Tracker';
+import PerformanceAverage from '../PerformanceAverage/PerformanceAverage';
+import SessionsAverage from '../SessionAverage/SessionAverage';
+import GoalScore from '../GoalScore/GoalScore';
 
 class Charts extends Component {
     constructor(props) {
@@ -56,6 +62,56 @@ class Charts extends Component {
             <section className="charts">
                 <Welcome welcomeData={this.state.welcomeData} />
                 <DailyActivity id={this.state.id}/>
+                {this.getCharts()}
+                {this.getTrackerSection()}
+            </section>
+        )
+    }
+
+    getCharts = () => {
+        return (
+            <section className="chartsHorizontal">
+                <SessionsAverage id={this.state.id} />
+                <PerformanceAverage id={this.state.id} />
+                <GoalScore 
+                    goalScoreData={this.state.goalScoreData} 
+                    goalScorePercentage={this.state.goalScorePercentage} 
+                />
+            </section>
+        )
+    }
+
+    getTrackerSection = () => {
+        return (
+            <section className="chartsVertical">
+                {/* CALORIES */}
+                <Tracker 
+                    data={this.state.macroTrackerData.calorieCount / 1000} // devide by 1000 for a propoer format
+                    icon={calories} 
+                    unitOfMeasure="kCal" 
+                    name="Calories"
+                />
+                {/* PROTEIN */}
+                <Tracker 
+                    data={this.state.macroTrackerData.proteinCount}
+                    icon={protein} 
+                    unitOfMeasure="g" 
+                    name="Protéines"
+                /> 
+                {/* CARBOHYDRATES */}
+                <Tracker 
+                    data={this.state.macroTrackerData.carbohydrateCount}
+                    icon={carbohydrates} 
+                    unitOfMeasure="g" 
+                    name="Glucides"
+                />
+                {/* LIPIDS */}
+                <Tracker 
+                    data={this.state.macroTrackerData.lipidCount}
+                    icon={lipids} 
+                    unitOfMeasure="g" 
+                    name="Lipides"
+                />
             </section>
         )
     }

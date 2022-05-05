@@ -35,7 +35,7 @@ class ApiProvider {
     // fetch user average session data
     async getUserAverageSessionData(id) {
         let data = {};
-        let url = `${this.baseUrl}/user/${id}/average-session`;
+        let url = `${this.baseUrl}/user/${id}/average-sessions`;
 
         await axios.get(url)
         .then((response) => {
@@ -46,13 +46,13 @@ class ApiProvider {
     }
 
     // fetch user performance data
-    async getUserDailyActivityData(id) {
+    async getUserPerformanceData(id) {
         let data = {};
         let url = `${this.baseUrl}/user/${id}/performance`;
 
         await axios.get(url)
         .then((response) => {
-            data = response; // maybe format this
+            data = ApiFormatter.getPerformanceAverageDataFormat(response);
         })
 
         return data;

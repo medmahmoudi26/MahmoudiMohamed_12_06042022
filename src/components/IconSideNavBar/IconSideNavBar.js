@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom';
 import React, {Component, Fragment} from 'react';
-import PropTypes from 'prop-types';
 
 class IconSideNavBar extends Component {
     render() {
@@ -12,10 +11,6 @@ class IconSideNavBar extends Component {
             </Fragment>
         )
     }
-}
-
-IconSideNavBar.propTypes = {
-    logo : PropTypes.string.isRequired,
 }
 
 export default IconSideNavBar;
